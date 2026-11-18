@@ -1,7 +1,7 @@
 
-print("ISM2411 Capstone — Shipment Analysis")
-print("Author: William Baker")
-print("Date:  ") 
+# ISM2411 Capstone — Shipment Analysis
+# Author: William Baker
+# Date:   
 
 # Business Questions:
  # 1. [Your question 1]
@@ -11,7 +11,7 @@ print("Date:  ")
 # AI Disclosure: [What, if anything, you used AI for]
 
 
-print("----------------------------------------------------------------------------")
+#  ────────────────────────────────────────────────────────────────────
 
 
 import pandas as pd
@@ -22,4 +22,12 @@ print(df.head())
 df.info()
 print(df.isnull().sum())
 print(df.describe())
+
+# ── 1. LOAD ───────────────────────────────────────────────────
+DATA_FILE = "data/capstone_shipments.csv" 
+df = pd.read_csv(DATA_FILE)
+print("Raw shape:", df.shape)
+print(df.head())
+df.info()
+print(df.isnull().sum())
 
