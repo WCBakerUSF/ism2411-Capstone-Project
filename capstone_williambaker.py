@@ -25,23 +25,38 @@ df = pd.read_csv(DATA_FILE)
 # Check shape (rows, columns)
 print("Shape:", df.shape)
 
-# Inspect first 5 rows
+# Inspect the first 5 rows
 print(df.head())
 
 # Summary of data types and missing values
 df.info()
 
-# Check missing values per column
+# Check missing values for each column
 print(df.isnull().sum())
 
-# Statistical summary (for numeric columns)
+# Statistical summary
 print(df.describe())
 
 # ── 2. DATA CLEANING ──────────────────────────────────────────────────
-# The columns in the dataset need to be standardized
-# 
+# The columns in the dataset need to be standardized 
 
+# Change all column names to lowercase, with underscores, and no spaces
+df.columns = (
+    df.columns.str.strip()
+              .str.lower()
+              .str.replace(r"[^a-z0-9]+", "_", regex=True)
+              .str.strip("_")
+)
 
+# For 'warehouse', 'carrier', 'product', remove spaces and ensure they're properly capitalized
+for col in ["warehouse", "carrier", "product_category"]:
+    df[col] = df[col].astype("string").str.strip()
+
+# Correct spelling errors in 'carriers'
+df["carrier"] = df["carrier"].replace({
+    "Costal Express": "Coastal Express",
+    "gulf  parcel": "Gulf Parcel",
+})
 
 
 
