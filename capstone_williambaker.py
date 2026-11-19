@@ -38,7 +38,8 @@ print(df.isnull().sum())
 print(df.describe())
 
 # ── 2. DATA CLEANING ──────────────────────────────────────────────────
-
+# The columns in the dataset need to be standardized
+# 
 
 
 
